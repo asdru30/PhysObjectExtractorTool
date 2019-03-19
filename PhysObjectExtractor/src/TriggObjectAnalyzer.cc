@@ -58,7 +58,7 @@ class TriggObjectAnalyzer : public edm::EDAnalyzer {
 
 
                
-      //edm::InputTag electronInput;
+      std::string   filterName_;
 
 	  // ----------member data ---------------------------
 
@@ -114,7 +114,7 @@ TriggObjectAnalyzer::TriggObjectAnalyzer(const edm::ParameterSet& iConfig)
 	hist_ch =  fs->make <TH1D>("hist_ch", "obj ch ", 100,0,5000 );
 	trigobjhisto = fs->make <TH1D>("trigobjchisto", "obj histo", 100, 0, 5000);
 
-	//electronInput = iConfig.getParameter<edm::InputTag>("InputCollection");
+	filterName_ = iConfig.getParameter<std::string>("filterName");
 
 }
 
@@ -162,11 +162,10 @@ TriggObjectAnalyzer::analyzeTriggObject(const edm::Event& iEvent, const edm::Han
 	  obj_phi.clear();
 	  obj_ch.clear();
 
-std::string filterName("hltSingleJet190Regional"); 
 
 edm::InputTag trigEventTag("hltTriggerSummaryAOD","","HLT"); //make sure have correct process on MC
 //it is important to specify the right HLT process for the filter, not doing this is a common bug
-trigger::size_type filterIndex = trigEvent->filterIndex(edm::InputTag(filterName,"",trigEventTag.process())); 
+trigger::size_type filterIndex = trigEvent->filterIndex(edm::InputTag(filterName_,"",trigEventTag.process())); 
 if(filterIndex<trigEvent->sizeFilters()){ 
     const trigger::Keys& trigKeys = trigEvent->filterKeys(filterIndex); 
     const trigger::TriggerObjectCollection & trigObjColl(trigEvent->getObjects());
