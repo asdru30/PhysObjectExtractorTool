@@ -18,8 +18,8 @@ process.GlobalTag.connect = cms.string('sqlite_file:/cvmfs/cms-opendata-conddb.c
 process.GlobalTag.globaltag = 'FT_53_LV5_AN1::All'
 
 #Here, you can enter the desired input tag, corresponding to each container, In addition, you can add more containers. 
-process.demo = cms.EDAnalyzer('TriggObjectAnalyzer'
-                 
+process.demo = cms.EDAnalyzer('TriggObjectAnalyzer',
+                 filterName = cms.string("hltSingleJet190Regional"),
                              )
 #https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideRecoDataTable
 
