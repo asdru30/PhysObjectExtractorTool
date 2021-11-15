@@ -6,7 +6,7 @@ Scientific research requires specific information to obtain good results. This i
 
 The instructions to write your own EDAnalyzer are [here](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookWriteFrameworkModule).
 
-In the code there are several comments explaining the logic that follows, also, some twiki links were added to expand the knowledge on the subject.
+In the code there're several comments explaining the logic that follows, also, some twiki links were added to expand the knowledge on the subject.
 
 ## Usage instrucctions
 
@@ -52,7 +52,3 @@ cmsRun physicsobjectsinfo_cfg.py
 ```
 
 ##### As a result you will get a ObjectInfoNtuple.root and histo.root file with simple variables and histograms.
-
-
-
-
